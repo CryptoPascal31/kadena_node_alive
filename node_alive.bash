@@ -23,7 +23,7 @@ networkId: $NETWORK
 EOF
 
 kda gen -t $TKPL -o $YAML > /dev/null
-NODE_TS=`kda local $YAML --no-verify-sigs |jq ".[][0].body.result.data"`
+NODE_TS=`kda local -n $NODE $YAML --no-verify-sigs |jq ".[][0].body.result.data"`
 
 TS_DIFF=$(($EPOCHSECONDS - NODE_TS))
 
