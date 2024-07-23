@@ -1,0 +1,9 @@
+[Unit]
+Description==Kadena Node Watchdog
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "node_alive http://127.0.0.1:1848; if [ $? -ne 0 ]; then echo 'Node requires restart'; systemctl try-restart kadena-node.service;fi"
+
+[Install]
+WantedBy=multi-user.target
