@@ -2,7 +2,7 @@
 set -e
 
 NODE=$1
-NETWORK=`curl -s ${NODE}/info | jq -r ".nodeVersion"`
+NETWORK=`curl -m 5 -s ${NODE}/info | jq -r ".nodeVersion"`
 
 echo "Network: $NETWORK"
 TKPL=`mktemp`
